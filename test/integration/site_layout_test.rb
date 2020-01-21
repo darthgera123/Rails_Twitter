@@ -4,6 +4,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  # Integration tests effectively simulate a browser clicking from page to page. 
   test "layout links" do
   get root_path
   assert_template 'static_pages/home'
