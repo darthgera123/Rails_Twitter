@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %>| Rails Twitter</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= full_title(yield(:title)) %></title>
+    <!-- similar to jekyll include we write chunks of code elsewhere and can include it here -->
+    <%= render 'layouts/render'%>
   </head>
 
   <body>
+    <%= render 'layouts/header'%>
+    <div class="container">
+
     <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
   </body>
 </html>
