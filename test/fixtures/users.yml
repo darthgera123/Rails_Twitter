@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-michael:
-  name: Michael Example
-  email: michael@example.com
-  # creates the password hash that we can use in the test suite
-  password_digest: <%= User.digest('password') %>
+# michael:
+#   name: Michael Example
+#   email: michael@example.com
+#   # creates the password hash that we can use in the test suite
+#   password_digest: <%= User.digest('password') %>

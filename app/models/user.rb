@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	attr_accessor :remember_token
 	# callback to fix the email
 	before_save{email.downcase!}
 	# email = email.downcase wont work.similar to python
@@ -15,6 +16,25 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     	BCrypt::Password.create(string, cost: cost)
     end
+    #Returns a random token. Used for cookie based sessions
+    def User.new_token
+    	SecureRandom.urlsafe_base64
+    end
 
+    def remember
+    	self.remember_token = User.new_token
+    	update_attribute(:remember_digest,User.digest(remember_token))
+    end
+
+    # compares the password stored in cookie with the remember token
+    def authenticated?(remember_token)
+    	# this is done for the cases when multiple browser windows are opened and you log out of one
+    	return false if remember_digest.nil?
+    	BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  	end
+
+  	def forget
+		update_attribute(:remember_digest,nil)
+	end
 
 end
