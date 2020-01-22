@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-	def hello
-		render html: "hullo mundo"
-	end
+	# will make sessions helper functions available to everyone
+	include SessionsHelper
 end
